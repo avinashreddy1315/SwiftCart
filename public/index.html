@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!--<link rel="stylesheet" href="../src/css/commonstyle.css">
+    <link rel="stylesheet" href="../src/css/indexstyle.css">
+    <link rel="stylesheet" href="../src/css/responsive.css"> -->
+    <link rel="stylesheet" href="./css/commonstyle.css">
+    <link rel="stylesheet" href="./css/indexstyle.css">
+   
+    <link rel="stylesheet" href="./css/responsive.css">
+    
+  
+</head>
+
+<body onload="bodyload()">
+    <!--NavBar section-->
+    <section id="header">
+        <a id="logo" href="index.html">
+            <img src="./images/logo/logovr.png" alt="logo">
+        </a>
+
+        
+
+        <div>
+            <ul id="navbar">
+                <li id="close"><button onclick="closemenu()" class="bi bi-x-lg"></button></li>
+                <li><a class="active" href="index.html">Home</a></li>
+                <li><a href="./html/shop.html">Shop</a></li>
+                
+                <li><a href="./html/cart.html"><img id="cart-icon" src="./images/icons/bag.svg"><span></span></a></span></li>
+            </ul>
+        </div>
+        <div class=" justify-content-center align-items-center" id="mobile" >
+            <button id="hamburger" onclick="showmenu()" class="bi bi-list"></button>
+            <a href="cart.html"><img id="cart-icon2" src="./images/icons/bag.svg"><span></span></a></span>
+        </div>
+        
+
+
+    </section>
+    <!--NavBar section ended-->
+
+    <!--banner section with id hero-->
+    <section id="hero">
+        <h4>Trade-in-offer</h4>
+        <h2>Super Value deals</h2>
+        <h1>On all Products</h1>
+        <p>Save more with coupons & up to 70% off!</p>
+        <a href="./html/shop.html"><button >Shop Now</button></a>
+    </section>
+    <!--banner section with id hero ends-->
+
+
+    <!--Feature box section-->
+    <section id="featurs" class="section-p1 d-flex align-items-center justify-content-between flex-wrap">
+        <div class="fe-box">
+            <img src="./images/features/f1.png">
+            <h6>Free Shipping</h6>
+        </div>
+
+        <div class="fe-box">
+            <img src="./images/features/f2.png">
+            <h6>Online Order</h6>
+        </div>
+
+        <div class="fe-box">
+            <img src="./images/features/f3.png">
+            <h6>Save Money</h6>
+        </div>
+
+        <div class="fe-box">
+            <img src="./images/features/f4.png">
+            <h6>Promotions</h6>
+        </div>
+
+        <div class="fe-box">
+            <img src="./images/features/f5.png">
+            <h6>Happy Sell</h6>
+        </div>
+
+        <div class="fe-box">
+            <img src="./images/features/f6.png">
+            <h6>24/7 Support</h6>
+        </div>
+    </section>
+    <!--Feature box section ends-->
+
+    <!--Catelog-->
+    <section class="category">
+        <h2>Shop By Category</h2>
+        <div  id="category-container" class=" d-flex flex-wrap justify-content-center">
+           
+        </div>
+    </section>
+    <!--Catelog section ends-->
+    
+    <!--banner section with id banner-->
+    <section id="banner" class="section-m1 d-flex flex-column justify-content-center align-items-center text-center">
+        <h2 class="text-white">Up to <span class="text-danger">70% off</span> - All t-Shirts & Accessories</h2>
+        <a href="./html/shop.html"><button class="normal">Explore more</button></a>
+    </section>
+     <!--banner section with id banner ends-->
+
+     <!--New Arrival Products section-->
+    <section id="new_arrivals" class="mt-5 ">
+        <div>
+            <h2 class="text-center">New Arrivals</h2>
+        </div>
+        <div class="new_arrival_products">
+            <div id="new_arrival_products_cards">
+                
+            </div>
+            
+        </div>
+    </section>
+     <!--New Arrival Products section ends-->
+
+     <!--Small Banner section starts-->
+     <section id="sm-banner" class="d-flex justify-content-between flex-wrap" >
+        <div class="banner-box d-flex flex-column justify-content-center align-items-start ">
+            <h4>Crazy deals</h4>
+            <h2>buy 1 get 1 free</h2>
+            <span>The best classic dress is on sale at SwiftCart</span>
+            <a href="./html/shop.html">
+                <button class="white">Learn More</button>
+            </a>
+
+        </div>
+
+        <div class="banner-box banner-box2 d-flex flex-column justify-content-center align-items-start">
+            <h4>Spring/Summer</h4>
+            <h2>Upcoming Season</h2>
+            <span>The best classic dress is on sale at SwiftCart</span>
+            <a href="./html/shop.html">
+                <button class="white">Collections</button>
+            </a>
+            
+
+        </div>
+
+     </section>
+      <!--Small Banner section ends-->
+
+      
+
+
+      <!--Newsletter section starts-->
+      <section id="news_letter" class="d-flex justify-content-between align-items-center section-m1">
+        <div class="newtext">
+            <h4>Sign Up For Newsletters</h4>
+            <p>Get email updates about our latest shop and <span>special offers</span></p>
+        </div>
+        <div id="form" class="form input-group" >
+            <input class="form-control" type="text" placeholder="your email address" >
+            <button class="normal input-group-text " >Sign Up</button> 
+        </div>
+      </section>
+      <!--NewsLetter section ends-->
+
+      <div class="shopping_cart" data-product-count="0">
+        <span class="cart_icon">&#128722</span>
+        </div>
+
+
+      <!--Footer Section starts-->
+      <section id="footer" class="row section-m1">
+        <div class="col-4 ">
+            <a id="logo" href="#"  >
+                <img class="mb-4" src="./images/logo/logovr.png" alt="logo">
+            </a>
+            <div>
+                <h4>Contact</h4>
+                <p><strong>Address:</strong> 290 Derry Road.Hudson.New Hampshire</p>
+                <p><strong>Phone:</strong> +01 2222 365/(+91) 01 2345 6789</p>
+                <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat </p>
+                <div>
+                    <h4>Follow Us</h4>
+                    <div id="social">
+                        <a href="#"><span class="bi bi-facebook fs-4 pe-1"></span></a>
+                        <a href="#"><span class="bi bi-twitter fs-4 pe-1"></span></a>
+                        <a href="#"><span class="bi bi-instagram fs-4 pe-1"></span></a>
+                        <a href="#"><span class="bi bi-pinterest fs-4 pe-1"></span></a>
+                        <a href="#"><span class="bi bi-youtube fs-4 pe-1"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2 ">
+            <h4>About</h4>
+            <p><a href="#">About Us</a></p>
+            <p><a href="#">Delivery Infomation</a></p>
+            <p><a href="#">Privacy Policy</a></p>
+            <p><a href="#">Terms and Conditions</a></p>
+            <p><a href="#">Contact Us</a></p>
+        </div>
+        <div class="col-2 ">
+            <h4>My Account</h4>
+            <p><a href="#">Sign In</a></p>
+            <p><a href="#">View Cart</a></p>
+            <p><a href="#">My Wishlist</a></p>
+            <p><a href="#">Track My Order</a></p>
+            <p><a href="#">Help</a></p>
+        </div>
+        <div class="col-4 col1">
+           <h4>Install App</h4>
+           <p>From App Store or Google Play</p>
+           <div id="app-link" class="d-flex ">
+            <button>
+                <img src="./images/pay/app.jpg">
+            </button>
+            <button>
+                <img src="./images/pay/play.jpg">
+            </button>
+           </div>
+           <p>Secured Payment Gateways</p>
+           <div>
+            <img src="./images/pay/pay.png">
+           </div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center m-2">
+            <p >&#169; 2024. SwiftCart - Inc. or its affiliates</p>
+        </div>
+      </section>
+       <!--Footer Section ends-->
+
+
+
+
+    <!--<script src="../../node_modules/jquery/dist/jquery.js"></script>
+    
+
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
+
+
+    <script src="./js/index.js"></script>
+
+</body>
+
+</html>

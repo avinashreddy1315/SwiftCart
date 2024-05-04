@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"> -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../css/commonstyle.css">
+    
+    <link rel="stylesheet" href="../css/indexstyle.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+
+
+</head>
+
+<body onload="bodyload()">
+    <!--NavBar section-->
+    <section id="header">
+        <a id="logo" href="../index.html">
+            <img src="../images/logo/logovr.png" alt="logo">
+        </a>
+
+
+
+        <div>
+            <ul id="navbar">
+                <li id="close"><button onclick="closemenu()" class="bi bi-x-lg"></button></li>
+                <li><a href="../index.html">Home</a></li>
+                <li><a class="active" href="shop.html">Shop</a></li>
+                <li><a href="cart.html"><img id="cart-icon" src="../images/icons/bag.svg"><span></span></a></span></li>
+            </ul>
+        </div>
+        <div class=" justify-content-center align-items-center" id="mobile">
+            <button id="hamburger" onclick="showmenu()" class="bi bi-list"></button>
+            <a href="cart.html"><img id="cart-icon2" src="../images/icons/bag.svg"><span></span></a></span>
+        </div>
+
+
+
+    </section>
+    <!--NavBar section ended-->
+
+    <!--banner section with id hero-->
+    <section id="shop_hero">
+        <h2>#stayhome</h2>
+        <p>Save more with coupons & up to 70% off!</p>
+    </section>
+    <!--banner section with id hero ends-->
+    <button id="filter" onclick="show_filter()" class="btn btn-primary m-3" > <span class="bi bi-filter"></span> Filters</button>
+    <!--All Products section-->
+    <section id="products">
+        <div class="row">
+            <div class="col-3" id="select_category">
+                
+                <div id="cc">
+                    <button onclick="close_filter()" id="filter_close" ><span class="bi bi-x-lg fs-2"></span></button>
+                    <div id="searc_box" class="input-group p-2 ">
+                        <input id="search_box" type="text" class="form-control">
+                        <button  class="input-group-text btn btn-primary"><span class="bi bi-search"></span></button>
+
+                    </div>
+                    <div class="d-flex justify-content-between pt-5">
+                        <h3 class="p-1">Categories</h3>
+                        <button onclick="clear_all()" id="clear_all_fliters">Clear All</button>
+                    </div>
+                    <div id="check_boxs">
+
+                    </div>
+
+                   
+                </div>
+                <div class="d-flex flex-column justify-content-center align-items-center mt-4 mb-5" >
+                    <p class="text-dark">Need help?</p>
+                    <img class="w-50" src="../images/needhelp.png">
+                </div>
+            </div>
+            <div class="col-9 " id="all_products">
+                <div id="all_products_cards">
+
+                </div>
+                <div id="pagination" class="d-flex justify-content-center align-items-center">
+                    <button onclick="prev()" id="prev_btn"><span class="bi bi-arrow-left"></span></button>
+                    <button onclick="next()" id="next_btn"><span class="bi bi-arrow-right"></span></button>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <div class="shopping_cart" data-product-count="0">
+        <span class="cart_icon">&#128722</span>
+   </div>
+
+
+
+
+
+
+
+    <!--Footer Section starts-->
+    <section id="footer" class="row section-m1">
+        <div class="col-4 ">
+            <a id="logo" href="#">
+                <img class="mb-4" src="../images/logo/logovr.png" alt="logo">
+            </a>
+            <div>
+                <h4>Contact</h4>
+                <p><strong>Address:</strong> 290 Derry Road.Hudson.New Hampshire</p>
+                <p><strong>Phone:</strong> +01 2222 365/(+91) 01 2345 6789</p>
+                <p><strong>Hours:</strong> 10:00 - 18:00, Mon - Sat </p>
+                <div>
+                    <h4>Follow Us</h4>
+                    <div id="social">
+                        <a href="#"><span class="bi bi-facebook fs-4 pe-1"></span></a>
+                        <a href="#"><span class="bi bi-twitter fs-4 pe-1"></span></a>
+                        <a href="#"><span class="bi bi-instagram fs-4 pe-1"></span></a>
+                        <a href="#"><span class="bi bi-pinterest fs-4 pe-1"></span></a>
+                        <a href="#"><span class="bi bi-youtube fs-4 pe-1"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-2 ">
+            <h4>About</h4>
+            <p><a href="#">About Us</a></p>
+            <p><a href="#">Delivery Infomation</a></p>
+            <p><a href="#">Privacy Policy</a></p>
+            <p><a href="#">Terms and Conditions</a></p>
+            <p><a href="#">Contact Us</a></p>
+        </div>
+        <div class="col-2 ">
+            <h4>My Account</h4>
+            <p><a href="#">Sign In</a></p>
+            <p><a href="#">View Cart</a></p>
+            <p><a href="#">My Wishlist</a></p>
+            <p><a href="#">Track My Order</a></p>
+            <p><a href="#">Help</a></p>
+        </div>
+        <div class="col-4 col1">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div id="app-link" class="d-flex ">
+                <button>
+                    <img src="../images/pay/app.jpg">
+                </button>
+                <button>
+                    <img src="../images/pay/play.jpg">
+                </button>
+            </div>
+            <p>Secured Payment Gateways</p>
+            <div>
+                <img src="../images/pay/pay.png">
+            </div>
+        </div>
+        <div class="d-flex justify-content-center align-items-center m-2">
+            <p>&#169; 2024. SwiftCart - Inc. or its affiliates</p>
+        </div>
+    </section>
+    <!--Footer Section ends-->
+
+
+
+
+   <!-- <script src="../../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
+
+    
+    <script src="../js/shop.js"></script>
+    
+
+</body>
+
+</html>
