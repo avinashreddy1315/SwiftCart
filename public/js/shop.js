@@ -10,6 +10,44 @@ let xz = 0;
 let bb;
 let flagvariable = true
 
+
+
+const urlParams = new URLSearchParams(window.location.search);
+let  buttonValue = urlParams.get('buttonvalue');
+
+
+
+if(buttonValue != null){
+    cat_by_indexpage(buttonValue) ;
+    
+}
+
+
+
+function cat_by_indexpage(butt){
+    flagvariable = false
+    document.getElementById("all_products_cards").innerHTML='';
+    let bb = butt.trim()
+    let url = `https://dummyjson.com/products/category/${bb}`;
+    console.log(url);
+    fetch(url)
+    .then(function (response){
+        return response.json();
+    })
+    .then(function(data){
+        console.log(data.products);
+        document.getElementById("all_products_cards").innerHTML = '';
+        display_product_card(data.products, itemsPerPage, currentPage);
+        //show_products_of_selected_cat(products_array, itemsPerPage1, currentPage1)
+    })
+
+    
+    
+    
+    
+ 
+}
+
 function show_filter(){
     document.getElementById("select_category").style.left = '0px'
 }
@@ -50,7 +88,7 @@ let inputs_length;
 let cart_length = 0;
 
 async function bodyload() {
-    
+    console.log(buttonValue);
     await GetAllProducts_categories();
     await Show_Products("https://dummyjson.com/products");
     
@@ -62,7 +100,6 @@ async function bodyload() {
         cart_length = cart_length + item.qty;
     })
     //cart_length = storedCartItems.length;
-    console.log(cart_length);
     shopping_cart.setAttribute('data-product-count', cart_length);
 
     
@@ -91,14 +128,15 @@ async function GetAllProducts_categories() {
             return response.json()
         })
         .then(function (data) {
-            data.unshift("All")
+            data.unshift({name:"All", slug:'All'})
+            
             for (var item of data) {
                 count++;
                 var div = document.createElement("div");
                 div.className = "check_box_container"
                 div.innerHTML = `
-            <input onchange="select_category()" class="inputs form-check-input check_box" type="checkbox" id="${item}" value="${item}">
-            <label class="ps-2" for="${item}">${item}</label>
+            <input onchange="select_category(event)" class="inputs form-check-input check_box" type="checkbox" id="${item.name}" value="${item.slug}">
+            <label class="ps-2" for="${item.slug}">${item.name}</label>
             `
                 document.getElementById("check_boxs").appendChild(div);
             }
@@ -114,10 +152,11 @@ async function GetAllProducts_categories() {
 
 
 //is to category select on filter
-function select_category() {
+function select_category(e) {
     let val = false;
     flagvariable = true
-    if (event.target.value == "All") {
+    console.log(e.target.value)
+    if (e.target.value == "All") {
         flagvariable = true
         Show_Products("https://dummyjson.com/products");
         for (let i = 1; i < inputs.length; i++) {
@@ -132,24 +171,24 @@ function select_category() {
     else {
         /* Show_Products(`https://dummyjson.com/products/category/${event.target.value}`) */
         //is to checkout the all box when user selects  any other category
-        if (event.target.value != "All") {
+        if (e.target.value != "All") {
             inputs[0].checked = false;
         }
 
         if (cat_arr.length < 1) {
-            cat_arr.push(event.target.value)
+            cat_arr.push(e.target.value)
             truth = 1;
             val = true;
-            Show_Products_by_cat(event.target.value);
+            Show_Products_by_cat(e.target.value);
 
         }
         else {
             cat_arr.map((item, index) => {
-                if (item == event.target.value) {
+                if (item == e.target.value) {
                     cat_arr.splice(index, 1)
                     val = true;
                     truth = 0;
-                    Show_Products_by_cat(event.target.value);
+                    Show_Products_by_cat(e.target.value);
 
                 }
             })
@@ -157,9 +196,9 @@ function select_category() {
 
         }
         if (val == false) {
-            cat_arr.push(event.target.value);
+            cat_arr.push(e.target.value);
             truth = 1
-            Show_Products_by_cat(event.target.value);
+            Show_Products_by_cat(e.target.value);
 
 
         }
@@ -187,7 +226,7 @@ async function Show_Products_by_cat(item) {
 
     }
     
-
+    console.log(product_array);
     show_products_of_selected_cat(products_array, itemsPerPage1, currentPage1)
 }
 
@@ -200,7 +239,7 @@ function show_products_of_selected_cat(products_array, itemsPerPage1, currentPag
     }
     
     document.getElementById("all_products_cards").innerHTML = '';
-    console.log(products_array);
+    //console.log(products_array);
     display_product_card(products_array, itemsPerPage1, currentPage1);
 
     
@@ -294,7 +333,7 @@ async function Show_Products(url) {
                         
                     </div>
                     <div class="description card-body">
-                        <span>${item.brand}</span>
+                        <span>${item.brand ? item.brand : 'SwiftCart'}</span>
                         <h5>${item.title.slice(0, 25)}</h5>
                         <div class="description desc">
                             <div class="stars-outer">
@@ -324,7 +363,7 @@ async function Show_Products(url) {
 document.getElementById('search_box').addEventListener('input', async function hello (event) {
     document.getElementById("all_products_cards").innerHTML = '';
     arr1.length = 0;
-    if (event.target.value == '') {
+    if (event.target.value == 'SwiftCart') {
         flagvariable = true
         Show_Products("https://dummyjson.com/products");
         for (let i = 1; i < inputs.length; i++) {
@@ -373,7 +412,7 @@ document.getElementById('search_box').addEventListener('input', async function h
                         
                     </div>
                     <div class="description card-body">
-                        <span>${item.brand}</span>
+                        <span>${item.brand ? item.brand : 'SwiftCart'}</span>
                         <h5>${item.title.slice(0, 25)}</h5>
                         <div class="description desc">
                             <div class="stars-outer">
@@ -415,8 +454,12 @@ function display_product_card(array, ipp, cp){
     document.getElementById("all_products_cards").innerHTML = '';
     const ilp = cp * ipp;
     const ifp = ilp - ipp;
+    console.log(`ifp :- ${ifp}, ilp :- ${ilp}`)
+    
     const ci = array.slice(ifp, ilp);
+    
     console.log(ci);
+    
     
     if (ilp >= array.length) {
         document.getElementById("next_btn").disabled = true;
@@ -448,7 +491,7 @@ function display_product_card(array, ipp, cp){
                 
             </div>
             <div class="description card-body">
-                <span>${item.brand}</span>
+                <span>${item.brand ? item.brand : 'SwiftCart'}</span>
                 <h5>${item.title.slice(0, 25)}</h5>
                 <div class="description desc">
                     <div class="stars-outer">
@@ -491,40 +534,7 @@ function clear_all(){
 }
 
 
-const urlParams = new URLSearchParams(window.location.search);
-let  buttonValue = urlParams.get('buttonvalue');
 
-
-
-if(buttonValue != null){
-    cat_by_indexpage(buttonValue) ;
-    
-}
-
-
-
-function cat_by_indexpage(butt){
-    flagvariable = false
-    document.getElementById("all_products_cards").innerHTML='';
-    bb = butt.replace(/\s+/g, '');
-    let url = `https://dummyjson.com/products/category/${bb}`;
-    fetch(url)
-    .then(function (response){
-        return response.json();
-    })
-    .then(function(data){
-        console.log(data.products);
-        document.getElementById("all_products_cards").innerHTML = '';
-        display_product_card(data.products, itemsPerPage, currentPage);
-        show_products_of_selected_cat(products_array, itemsPerPage1, currentPage1)
-    })
-
-    
-    
-    
-    
- 
-}
 
 const shopping_cart = document.querySelector('.shopping_cart');
 

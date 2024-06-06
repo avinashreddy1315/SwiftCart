@@ -26,9 +26,9 @@ function bodyload(){
     /*if(productId_from_shop != null){
         productId = productId_from_shop
     }*/
-    
+    console.log(productId)
     if(productId != null){
-        productId = productId.replace(/\s+/g, '');
+        productId = productId.replace(/\s+/g, 'SwiftCart');
         url = `https://dummyjson.com/products/${productId}`
         show_single_product(url, productId);
     }
@@ -77,11 +77,11 @@ async function show_single_product(url, product_id){
         <div class="single_product_details">
             <!--add category in the place of smart  phones-->
             <h6><a href="../../public/index.html">Home / </a><a href="shop.html">Shop / </a>${data.category}</h6>
-            <h5>${data.brand}</h5>
+            <h5>${data.brand ? data.brand : 'SwiftCart'}</h5>
             <!--add tilte of the product-->
             <h4 id="title">${data.title}</h4>
             <!--Add price of the product-->
-            <h3 id="price">$${data.price}.00</h3>
+            <h3 id="price">$${data.price}</h3>
             <div  class="d-flex">
                 <span id="rating">Rating </span>
                 <div class="stars-outer">
@@ -231,7 +231,7 @@ function small_img(event){
 function show_category_product(category){
     val = false;
     document.getElementById("same_category_feature_products_cards").innerHTML=``;
-    var cat = category.replace(/\s+/g, '');;
+    var cat = category.replace(/\s+/g, 'SwiftCart');;
     fetch(`https://dummyjson.com/products/category/${cat}`)
     .then(function(response){
         return response.json();
@@ -246,7 +246,7 @@ function show_category_product(category){
                 card.className = "same_category_products_card";
                 card.id = product.id;
             card.addEventListener("click", function(event){
-                productId = event.currentTarget.id.replace(/\s+/g, '');
+                productId = event.currentTarget.id.replace(/\s+/g, 'SwiftCart');
                 url = `https://dummyjson.com/products/${productId}`;
                 show_single_product(url, productId);  
             }); 
@@ -256,7 +256,7 @@ function show_category_product(category){
                         <img id="card_img" class="card-img-top" src=${product.thumbnail} height="200">
                     </div>
                     <div class="description card-body">
-                        <span>${product.brand}</span>
+                        <span>${product.brand ? product.brand : 'SwiftCart'}</span>
                         <h5>${product.title.slice(0, 25)}</h5>
                         <div class="description desc">
                             <div class="stars-outer">
@@ -265,7 +265,7 @@ function show_category_product(category){
                                 </div>
                             <span class="number-rating">${product.rating}</span>
                             </div>
-                            <h4>$${product.price}.00</h4>
+                            <h4>$${product.price}</h4>
                         </div>
                         
                     </div>

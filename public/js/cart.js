@@ -49,14 +49,14 @@ function show_cart_item(storedCartItems){
                     <div class="mt-3">
                         <div>
                                 <!--Brand and title-->
-                                <h6 id="brand">${item.brand}</h6>
+                                <h6 id="brand">${item.brand ? item.brand : 'SwiftCart'}</h6>
                                 <h5 id="title">${item.title.slice(0, 21)}</h5>
                         </div>
                         <div class="prices">
                                 <!--original price-->
                                 <p><s id="original_price">$${original_price.toFixed(2)}</s></p>
                                 <!--after discount price-->
-                                <p id="after_discount_price">$${item.price}.00</p>
+                                <p id="after_discount_price">$${item.price}</p>
                                 <!--discount percentage-->
                                 <p id="discount_percentage">${item.discountPercentage} Off</p>
                         </div>
@@ -159,6 +159,7 @@ function quantity_increaser(btn, e) {
 
 
 function show_total_price(){
+    let discount_amount = original_price-total_price;
     document.querySelector("#show_prices").innerHTML=`
     <div class="d-flex justify-content-between">
                             <div>
@@ -168,9 +169,9 @@ function show_total_price(){
                             </div>
                             <div id="all_amounts">
                                 <!--Price of all the items-->
-                                <p class="pp">$${total_price}</p>
+                                <p class="pp">$ ${parseFloat((total_price).toFixed(2))}</p>
                                 <!--Discount for all the items-->
-                                <p class="pp" id="discount_amount"> -$${original_price-total_price}</p>
+                                <p class="pp" id="discount_amount"> -$ ${parseFloat((discount_amount).toFixed(3))}</p>
                                 <!--Delivery charges-->
                                 <p class="pp" id="delivey_charges"><s>$20</s> Free</p>
                                 
@@ -180,10 +181,10 @@ function show_total_price(){
                         <div id="total_amount" class="d-flex justify-content-between">
                             <p >Total Amount</p>
                             <!--Total amount of cart-->
-                            <p>$${total_price}</p>
+                            <p>$ ${parseFloat((total_price).toFixed(2))}</p>
                         </div>
                         <hr class="new_1">
-                        <p id="saving_amount">You will save $${original_price - total_price} on this order</p>
+                        <p id="saving_amount">You will save $ ${parseFloat((discount_amount).toFixed(3))} on this order</p>
     `
 }
 

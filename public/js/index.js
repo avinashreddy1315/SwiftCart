@@ -37,8 +37,9 @@ function getcatgories() {
             return response.json()
         })
         .then(function (data) {
+            console.log(data[0].name);
             data.map(categorie =>
-                Promise.all([displayCategories(categorie), new_arrival(categorie)])
+                Promise.all([displayCategories(categorie.name), new_arrival(categorie.name)])
 
             )
         })
@@ -78,8 +79,7 @@ function displayCategories(url) {
 /* onclick event on category card to get the category related items */
 function show_category(event) {
     
-   
-        
+        console.log(event.currentTarget.value)
         window.location.href=`../../public/html/shop.html?buttonvalue= ${event.currentTarget.value}`;
         
 }
@@ -112,7 +112,7 @@ function new_arrival(newproduct) {
                         <button class="btn_new"><span class="ribbon">NEW</span></button>
                     </div>
                     <div class="description card-body">
-                        <span>${data.products[ran].brand}</span>
+                        <span>${data.products[ran].brand ? data.products[ran].brand : 'SwiftCart' }</span>
                         <h5>${data.products[ran].title.slice(0, 25)}</h5>
                         <div class="description desc">
                             <div class="stars-outer">
